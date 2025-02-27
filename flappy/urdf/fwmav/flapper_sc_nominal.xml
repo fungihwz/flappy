@@ -1,11 +1,11 @@
 <mujoco model="flapper_sc">
-  <compiler angle="radian" meshdir="./meshes/"/>
+  <compiler angle="radian" meshdir="flappy/flappy/urdf/fwmav/meshes/"/>
 
   <option timestep="0.001" gravity="0 0 -9.81"/>
 
   <asset>
     <!-- Torso -->
-    <mesh name="torso_mesh" file="flappy/flappy/urdf/fwmav/meshes/torso_small_base.STL"/>
+    <mesh name="torso_mesh" file="torso_small_base.STL"/>
     <!-- Left Wing -->
     <mesh name="left_wing_mesh" file="Wing_Camber_70mm_C35mm_no_trailing_L.STL"/>
     <mesh name="left_LE_mesh" file="left_LE.STL"/>
