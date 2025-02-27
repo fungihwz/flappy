@@ -14,6 +14,7 @@
     <mesh name="right_LE_mesh" file="right_LE.STL"/>
   </asset>
 
+  <worldbody>
     <!-- Torso (main body) -->
     <body name="torso" pos="0 0 0">
       <freejoint name="torso_to_world"/>  <!-- Replaces URDF's floating joint -->
