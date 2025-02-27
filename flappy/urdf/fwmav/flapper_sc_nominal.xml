@@ -6,7 +6,7 @@
   <visual>
     <global offwidth="800" offheight="600"/>
     <rgba haze="0.7 0.7 0.7 1"/>  <!-- Background color (RGB + alpha) -->
-    <headlight ambient="0.5" diffuse="0.5" specular="0.1"/>  <!-- Default light -->
+    
   </visual>
   
   <asset>
