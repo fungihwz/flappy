@@ -1,0 +1,72 @@
+<mujoco model="flapper_sc">
+  <compiler angle="radian" meshdir="meshes/"/>
+
+  <option timestep="0.001" gravity="0 0 -9.81"/>
+
+  <asset>
+    <!-- Torso -->
+    <mesh name="torso_mesh" file="torso_small_base.STL"/>
+    <!-- Left Wing -->
+    <mesh name="left_wing_mesh" file="Wing_Camber_70mm_C35mm_no_trailing_L.STL"/>
+    <mesh name="left_LE_mesh" file="left_LE.STL"/>
+    <!-- Right Wing -->
+    <mesh name="right_wing_mesh" file="right_wing.STL"/>
+    <mesh name="right_LE_mesh" file="right_LE.STL"/>
+  </asset>
+
+  <worldbody>
+    <body name="world"/>
+
+    <!-- Torso (main body) -->
+    <body name="torso" pos="0 0 0">
+      <freejoint name="torso_to_world"/>  <!-- Replaces URDF's floating joint -->
+      <inertial pos="0.1797E-3 0.0008E-3 -1.3998E-3" mass="10.9067E-3" 
+                fullinertia="4238.1285E-9 -76.8896E-9 16.5500E-9 3970.1646E-9 0.3011E-9 2440.9505E-9"/>
+      <geom type="mesh" mesh="torso_mesh" rgba="0 0 0 1" contype="1" conaffinity="1"/>
+
+      <!-- Left Wing Assembly -->
+      <body name="left_leading_edge" pos="0 0.01395 0.0189913">
+        <joint name="left_stroke" type="hinge" axis="0 0 1" limited="true" range="-1.63 1.63" 
+               damping="8E-9" frictionloss="1E-9"/>
+        <inertial pos="-0.2837E-3 3.3023E-3 -6.3984E-3" mass="0.7081E-3" 
+                  fullinertia="132.8411E-9 -0.0416E-9 -0.4990E-9 47.7258E-9 12.5149E-9 90.6904E-9"/>
+        <geom type="mesh" mesh="left_LE_mesh" rgba="0 0 1 1"/>
+
+        <!-- Left Wing -->
+        <body name="left_wing">
+          <joint name="left_rotate" type="hinge" axis="0 1 0" limited="true" range="-0.7854 0.7854" 
+                 damping="1E-9" frictionloss="1E-8"/>
+          <inertial pos="0.0024E-3 37.3242E-3 -9.8917E-3" mass="0.0626E-3" 
+                    fullinertia="21.4402E-9 -0.0000E-9 -0.0001E-9 2.2204E-9 0.1968E-9 19.2209E-9"/>
+          <geom type="mesh" mesh="left_wing_mesh" rgba="0 0 1 1"/>
+        </body>
+      </body>
+
+      <!-- Right Wing Assembly (mirror of left) -->
+      <body name="right_leading_edge" pos="0 -0.01395 0.0189913">
+        <joint name="right_stroke" type="hinge" axis="0 0 -1" limited="true" range="-1.63 1.63" 
+               damping="8E-9" frictionloss="1E-9"/>
+        <inertial pos="-0.2837E-3 -3.3023E-3 -6.3984E-3" mass="0.7081E-3" 
+                  fullinertia="132.8411E-9 0.0416E-9 -0.4990E-9 47.7258E-9 -12.5149E-9 90.6904E-9"/>
+        <geom type="mesh" mesh="right_LE_mesh" rgba="1 0 0 1"/>
+
+        <!-- Right Wing -->
+        <body name="right_wing">
+          <joint name="right_rotate" type="hinge" axis="0 1 0" limited="true" range="-0.7854 0.7854" 
+                 damping="1E-9" frictionloss="1E-8"/>
+          <inertial pos="-0.0024E-3 -37.3242E-3 -9.8917E-3" mass="0.0626E-3" 
+                    fullinertia="21.4402E-9 -0.0000E-9 0.0001E-9 2.2204E-9 -0.1968E-9 19.2209E-9"/>
+          <geom type="mesh" mesh="right_wing_mesh" rgba="1 0 0 1"/>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <!-- Actuators (if needed later) -->
+  <actuator>
+    <motor joint="left_stroke" gear="1"/>
+    <motor joint="left_rotate" gear="1"/>
+    <motor joint="right_stroke" gear="1"/>
+    <motor joint="right_rotate" gear="1"/>
+  </actuator>
+</mujoco>
