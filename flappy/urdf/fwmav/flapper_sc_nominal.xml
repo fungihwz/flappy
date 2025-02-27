@@ -10,6 +10,9 @@
   </visual>
   
   <asset>
+    <!-- Light gray floor -->
+    <material name="floor_mat" rgba="0.6 0.6 0.6 1"/>  
+
     <!-- Torso -->
     <mesh name="torso_mesh" file="torso_small_base.STL"/>
     <!-- Left Wing -->
@@ -22,18 +25,19 @@
 
   <worldbody>
     <!-- Add lights -->
-    <light name="light1" directional="true" diffuse="0.8 0.8 0.8" pos="0 0 5" dir="0 0 -1"/>
-    <light name="light2" directional="true" diffuse="0.5 0.5 0.5" pos="0 5 0" dir="0 -1 0"/>
-    
+    <light name="top_light" directional="true" diffuse="0.8 0.8 0.8" pos="0 0 5" dir="0 0 -1"/>
+    <light name="side_light" directional="true" diffuse="0.5 0.5 0.5" pos="2 2 2" dir="-1 -1 -1"/>
+    <geom name="floor" size="0 0 .05" type="plane" material="floor_mat" 
+          pos="0 0 -0.01" conaffinity="0" contype="0"/>
     <!-- Add a tracking camera -->
-    <camera name="fixed" mode="fixed" pos="0.2 -0.5 0.2" xyaxes="1 0 0 0 0 1"/>
+    <camera name="fixed" mode="fixed" pos="0.2 -0.2 0.2" xyaxes="1 0 0 0 0 1"/>
     
     <!-- Torso (main body) -->
     <body name="torso" pos="0 0 0">
       <freejoint name="torso_to_world"/>  <!-- Replaces URDF's floating joint -->
       <inertial pos="0.1797E-3 0.0008E-3 -1.3998E-3" mass="10.9067E-3" 
                 diaginertia="4238.1285E-9 3970.1646E-9 2440.9505E-9"/> <!-- Diagonal terms only -->
-      <geom type="mesh" mesh="torso_mesh" rgba="0 0 0 1" contype="1" conaffinity="1"/>
+      <geom type="mesh" mesh="torso_mesh" rgba="0 0 0 1" />
 
       <!-- Left Wing Assembly -->
       <body name="left_leading_edge" pos="0 0.01395 0.0189913">
