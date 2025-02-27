@@ -30,7 +30,7 @@
     <geom name="floor" size="0 0 .05" type="plane" material="floor_mat" 
           pos="0 0 -0.01" conaffinity="0" contype="0"/>
     <!-- Add a tracking camera -->
-    <camera name="fixed" mode="fixed" pos="0.2 -0.2 0.2" xyaxes="1 0 0 0 0 1"/>
+    <camera name="fixed" mode="fixed" pos="0.01 -0.4 0.05" xyaxes="1 0 0 0 0 1"/>
     
     <!-- Torso (main body) -->
     <body name="torso" pos="0 0 0">
