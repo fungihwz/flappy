@@ -2,7 +2,13 @@
   <compiler angle="radian" meshdir="flappy/flappy/urdf/fwmav/meshes/"/>
 
   <option timestep="0.001" gravity="0 0 -9.81"/>
-
+  
+  <visual>
+    <global offwidth="800" offheight="600"/>
+    <rgba haze="0.7 0.7 0.7 1"/>  <!-- Background color (RGB + alpha) -->
+    <headlight ambient="0.5" diffuse="0.5" specular="0.1"/>  <!-- Default light -->
+  </visual>
+  
   <asset>
     <!-- Torso -->
     <mesh name="torso_mesh" file="torso_small_base.STL"/>
@@ -15,6 +21,9 @@
   </asset>
 
   <worldbody>
+    <!-- Add a tracking camera -->
+    <camera name="fixed" mode="fixed" pos="0 -0.5 0.2" xyaxes="1 0 0 0 0 1"/>
+    
     <!-- Torso (main body) -->
     <body name="torso" pos="0 0 0">
       <freejoint name="torso_to_world"/>  <!-- Replaces URDF's floating joint -->
