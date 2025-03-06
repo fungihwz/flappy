@@ -79,9 +79,9 @@
 
   <!-- Actuators (if needed later) -->
   <actuator>
-    <motor joint="left_stroke" gear="1"/>
+    <motor name="left_motor" joint="left_stroke" gear="1"/>
     <motor joint="left_rotate" gear="1"/>
-    <motor joint="right_stroke" gear="1"/>
+    <motor name="right_motor" joint="right_stroke" gear="1"/>
     <motor joint="right_rotate" gear="1"/>
   </actuator>
 </mujoco>
