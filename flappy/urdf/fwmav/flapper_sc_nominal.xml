@@ -10,9 +10,10 @@
   </visual>
   
   <asset>
-    <!-- Light gray floor -->
-    <material name="floor_mat" rgba="0.6 0.6 0.6 1"/>  
-
+    <!-- Light gray floor material name="floor_mat" rgba="0.6 0.6 0.6 1"-->
+    
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="floor_mat" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
     <!-- Torso -->
     <mesh name="torso_mesh" file="torso_small_base.STL"/>
     <!-- Left Wing -->
