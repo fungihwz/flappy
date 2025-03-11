@@ -25,12 +25,12 @@
   </asset>
 
   <worldbody>
-    <!-- Add lights conaffinity="0" contype="0"-->
+    <!-- Add lights -->
     <light name="top_light" directional="true" diffuse="0.8 0.8 0.8" pos="0 0 0.5" dir="0 0 -1"/>
     <light name="spotlight" mode="targetbodycom" target="torso" diffuse=".8 .8 .8" specular="0.3 0.3 0.3" pos="0 -0.3 0.2" cutoff="30"/>
     <light name="side_light" directional="true" diffuse="0.8 0.8 0.8" pos="1 1 1" dir="-1 -1 -1" />
     <geom name="floor" size="0 0 .05" type="plane" material="floor_mat" 
-          pos="0 0 -1.0"/>
+          pos="0 0 -1.0" conaffinity="0" contype="0"/>
     <!-- Add a tracking camera -->
     <camera name="fixed" mode="fixed" pos="0.1 -0.3 0.05" xyaxes="1 0 0 0 0 1"/>
     
